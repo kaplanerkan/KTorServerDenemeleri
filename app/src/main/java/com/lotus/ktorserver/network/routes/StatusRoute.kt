@@ -5,7 +5,7 @@ import io.ktor.server.response.respondText
 import io.ktor.server.routing.get
 import io.ktor.server.routing.routing
 
-fun Application.configureStatusRoutes() {
+fun Application.statusRoutes() {
     routing {
         get("/status") {
             call.respondText("ONLINE")

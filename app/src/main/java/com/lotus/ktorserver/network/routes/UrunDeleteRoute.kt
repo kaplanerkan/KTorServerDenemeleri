@@ -12,7 +12,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 data class DeleteRequest(val id: Int)
 
-fun Application.configureUrunDeleteRoute(database: AppDatabase) {
+fun Application.urunDeleteRoute(database: AppDatabase) {
     routing {
         post("/urun/sil") {
             try {

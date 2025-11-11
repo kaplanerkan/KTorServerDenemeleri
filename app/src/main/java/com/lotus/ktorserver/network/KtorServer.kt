@@ -2,12 +2,12 @@ package com.lotus.ktorserver.network
 
 import android.util.Log
 import com.lotus.ktorserver.db.AppDatabase
-import com.lotus.ktorserver.network.routes.configureUrunEkleRoutes
-import com.lotus.ktorserver.network.routes.configureUrunListRoutes
-import com.lotus.ktorserver.network.routes.installUrunActiveRoute
-import com.lotus.ktorserver.network.routes.installUrunDeleteRoutes
-import com.lotus.ktorserver.network.routes.statusRoutes
-import com.lotus.ktorserver.network.routes.urunUpdateRoute
+import com.lotus.ktorserver.network.routes.routingStatus
+import com.lotus.ktorserver.network.routes.routingUrunEkle
+import com.lotus.ktorserver.network.routes.routingUrunList
+import com.lotus.ktorserver.network.routes.routingUrunUpdate
+import com.lotus.ktorserver.network.routes.routingUrunActive
+import com.lotus.ktorserver.network.routes.routingUrunDelete
 import io.ktor.serialization.kotlinx.json.json
 import io.ktor.server.application.install
 import io.ktor.server.engine.EmbeddedServer
@@ -48,12 +48,12 @@ object KtorServer {
             install(CORS) { anyHost() }
 
 
-            statusRoutes()
-            configureUrunListRoutes(database)
-            configureUrunEkleRoutes(database)
-            urunUpdateRoute(database)
-            installUrunActiveRoute(database)
-            installUrunDeleteRoutes(database)
+            routingStatus()
+            routingUrunEkle(database)
+            routingUrunList(database)
+            routingUrunUpdate(database)
+            routingUrunActive(database)
+            routingUrunDelete(database)
 
         }.start(wait = false)
 

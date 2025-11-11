@@ -18,7 +18,7 @@ data class ActiveRequest(
     val active: Boolean
 )
 
-fun Application.installUrunActiveRoutes(database: AppDatabase) {
+fun Application.urunActiveRoutes(database: AppDatabase) {
     routing {
         post("/urun/active") {
             try {
@@ -48,7 +48,8 @@ fun Application.installUrunActiveRoutes(database: AppDatabase) {
                     ApiResponse(
                         success = true,
                         message = if (request.active) "Ürün aktif edildi" else "Ürün pasif hale getirildi",
-                        urun = guncellenmis
+                        urun = guncellenmis,
+                        error = "0"
                     )
                 )
 

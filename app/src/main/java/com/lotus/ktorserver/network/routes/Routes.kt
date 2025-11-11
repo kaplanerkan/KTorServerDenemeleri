@@ -4,7 +4,6 @@ import com.lotus.ktorserver.db.AppDatabase
 import io.ktor.server.application.Application
 import io.ktor.server.routing.routing
 
-// BURAYA EKLE — BU SATIRLAR OLMAZSA OLMAZ!
 fun Application.routingStatus() = routing { statusRoutes() }
 fun Application.routingUrunEkle(database: AppDatabase) = routing { urunEkleRoute(database) }
 fun Application.routingUrunList(database: AppDatabase) = routing { urunListRoute(database) }

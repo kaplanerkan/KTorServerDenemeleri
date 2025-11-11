@@ -1,8 +1,10 @@
 package com.lotus.ktorserver.network.routes
 
+import android.util.Log
 import com.lotus.ktorserver.db.AppDatabase
 import com.lotus.ktorserver.models.ApiResponse
 import io.ktor.server.application.Application
+import io.ktor.server.request.receive
 import io.ktor.server.request.receiveText
 import io.ktor.server.response.respond
 import io.ktor.server.routing.post
@@ -16,12 +18,15 @@ fun Application.urunDeleteRoute(database: AppDatabase) {
     routing {
         post("/urun/sil") {
             try {
-                // EN SADE VE EN GARANTİ YOL – TEXT OLARAK AL, ELLE PARSE ET
-                val body = call.receiveText()
-                // {"id":15} formatını yakala
-                val idMatch = """"id"\s*:\s*(\d+)""".toRegex().find(body)
-                val id = idMatch?.groupValues?.get(1)?.toIntOrNull() ?: 0
 
+                val request = call.receive<DeleteRequest>()
+                Log.e("request", request.id.toString())
+                // EN SADE VE EN GARANTİ YOL – TEXT OLARAK AL, ELLE PARSE ET
+//                val body = call.receiveText()
+//                // {"id":15} formatını yakala
+//                val idMatch = """"id"\s*:\s*(\d+)""".toRegex().find(body)
+//                val id = idMatch?.groupValues?.get(1)?.toIntOrNull() ?: 0
+                val id = request.id
                 if (id <= 0) {
                     call.respond(
                         ApiResponse(

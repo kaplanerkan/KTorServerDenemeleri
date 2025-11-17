@@ -5,7 +5,6 @@ import com.lotus.ktorserver.db.AppDatabase
 import com.lotus.ktorserver.models.ApiResponse
 import io.ktor.server.application.Application
 import io.ktor.server.request.receive
-import io.ktor.server.request.receiveText
 import io.ktor.server.response.respond
 import io.ktor.server.routing.post
 import io.ktor.server.routing.routing
